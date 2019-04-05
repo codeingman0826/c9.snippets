@@ -20,6 +20,19 @@ define("plugins/c9.snippets/__static__",[], function(require, exports, module) {
         var Plugin = imports.Plugin;
         var plugin = new Plugin();
         plugin.version = "undefined";
+        function load() {
+            commands.addCommand({
+                name: "test",
+                bindKey: { mac: "Command-Alt-J", win: "Ctrl-Alt-J" },
+                exec: function() {
+                    alert("success!");
+                },
+                isAvailable: function() { return true; }
+            }, plugin);
+            menus.addItemByPath("Tools/Wanghao", new ui.item({
+                command: "test"
+            }), 300, plugin);
+        }
         plugin.on("load", function load() {
             [
                 {
